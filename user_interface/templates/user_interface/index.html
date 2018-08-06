@@ -2,15 +2,40 @@
 
 {% block content %}
 
-<a-scene>
+<a-scene do-something>
     <a-assets>
       
     </a-assets>
 
-    <a-sky color='white'></a-sky>
+    <a-sky color='blue'></a-sky>
     <a-camera wasd-controls-enabled='false'></a-camera>
-    <a-text value='hello world' color='black' position='0 1.5 -5'></a-text>
+    <a-box color="tomato" depth="1" height="4" width="6" position='1 1.5 -5'></a-box>
   </a-scene>
 
+
+
+<script>
+  $(document).ready(function(){
+    i = 0;
+    x = 0;
+    
+    var a = [];
+    $( window ).keyup(function( event ) {
+      c = '';
+      event.preventDefault();
+      var res = String.fromCharCode(event.which);
+      a.push(res);
+      a.forEach(function(element) {
+        c += element;
+      });
+      console.log(c)
+      $("a-scene a-box").prepend("<a-text id='sup' value='"+ c +"' width='3.7' height='4' color='black' position='-2.1 0 2'></a-text>");
+ 
+    });
+    
+});
+  
+</script>
+ 
 {% endblock %}
 
